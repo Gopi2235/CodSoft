@@ -1,0 +1,45 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class GuessNumberGame {
+
+    public static void main(String[] args) {
+        // Creates instances of Scanner and Random
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+
+        // Defines the lower and upper bounds for the random number
+        int lowerBound = 1;
+        int upperBound = 100;
+
+        // Generates a random number within the specified range
+        int numberToGuess = random.nextInt(upperBound - lowerBound + 1) + lowerBound;
+
+        // Initializes the user's guess to an invalid value (-1)
+        int userGuess = -1;
+
+        // Provides a welcome message and explains the game
+        System.out.println("Welcome to the Guess Number Game!");
+        System.out.println("I have selected a number between " + lowerBound + " and " + upperBound + ".");
+        System.out.println("Try to guess the number!");
+
+        // Enters a loop that continues until the user guesses the correct number
+        while (userGuess != numberToGuess) {
+            // Prompts the user to enter their guess
+            System.out.print("Enter your guess: ");
+            userGuess = scanner.nextInt();
+
+            // Compares the user's guess with the generated number and provides feedback
+            if (userGuess < numberToGuess) {
+                System.out.println("Too low! Try again.");
+            } else if (userGuess > numberToGuess) {
+                System.out.println("Too high! Try again.");
+            } else {
+                System.out.println("Congratulations! You guessed the correct number.");
+            }
+        }
+
+        // Closes the scanner after the game ends
+        scanner.close();
+    }
+}
